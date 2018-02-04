@@ -35,52 +35,23 @@ with open('nfl.csv', 'r') as csv_file:
             playerAttributeArray.append(line[i])
 
         # playerAttributeArray.append()
-        print("the current player")
-        print(playerAttributeArray)
 
         ######################################################################
         #determine if the player is offensie or defensive
         #offiensive positions are ["qb", "rb", "fb", "wr", "te", "lt", "lg", "c", "rg", "rt", "k", "r", "pr"]
         #deffensive positions are ["de", "dt", "lb", "olb", "ilb", "mlb", "cb", "s"]
         playerPosition = playerAttributeArray[1]
-        print(playerPosition)
 
         if playerPosition in offenseArray:
             playerType = 'offense'
         elif playerPosition in defenseArray:
             playerType = 'defense'
 
-        print(playerType)
-
-
-
-
-
-
-
-
-
-
-
-        # if offenseArray.index(playerPosition) >= 0:
-        #     playerType = 'deffense'
-        #     defense = False
-        # elif defenseArray.index(playerPosition) >= 0:
-        #     playerType = 'offense'
-        #     offense = False
-        # # if defenseArray.index(playerPosition) >= 0:
-        # #     playerType = 'offense'
-        # #     offense = False
-        # # elif offenseArray.index(playerPosition) >= 0:
-        # #     playerType = 'deffense'
-        # #     defense = False
-
-
-
-
-
         #add offensive/defensive value to importPlayerArray to position n in the array
-
+        playerAttributeArray.append(playerType)
+        print("the current player is ")
+        print(playerAttributeArray[2])
+        print(playerAttributeArray)
 
 
 
