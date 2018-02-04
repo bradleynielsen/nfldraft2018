@@ -49,12 +49,25 @@ with open('nfl.csv', 'r') as csv_file:
 
         #add offensive/defensive value to importPlayerArray to position n in the array
         playerAttributeArray.append(playerType)
-        print("the current player is ")
-        print(playerAttributeArray[2])
-        print(playerAttributeArray)
+        # print("the current player is ")
+        # print(playerAttributeArray[2])
+        # print(playerAttributeArray)
+
+
+        allPlayersArray.append(playerAttributeArray)
+
+
+print(allPlayersArray)
+        # calculate the player value index(points/cost)
+        # [6]/[3]
 
 
 
-    #     calculate the player value index(points/cost)
+
+
     #
+
+
+
+
     #     append the new  player importPlayerArray to allPlayersArray
