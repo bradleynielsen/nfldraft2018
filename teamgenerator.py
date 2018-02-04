@@ -63,16 +63,20 @@ with open('nfl.csv', 'r') as csv_file:
         # print(playerValueIndex)
         playerAttributeArray.append(playerValueIndex)
 
+        #append the new  player importPlayerArray to allPlayersArray
         allPlayersArray.append(playerAttributeArray)
 
-#append the new  player importPlayerArray to allPlayersArray
-# print(allPlayersArray)
+# print all players
+# for n in range(len(allPlayersArray)):
+#     print(allPlayersArray[n])
 
 # initialize arrays for plyaer type groups
 offensivePlayersArray = []
 defensivePlayersArray = []
 
 # create offensive  players  array
+offenseCount = 0
+defenseCount = 0
 for ii in range(len(allPlayersArray)):
     if allPlayersArray[ii][7] == 'offense':
         newOffensivePlayer = []
@@ -80,7 +84,11 @@ for ii in range(len(allPlayersArray)):
         newOffensivePlayer.append(allPlayersArray[ii][3])
         newOffensivePlayer.append(allPlayersArray[ii][2])
         newOffensivePlayer.append(allPlayersArray[ii][8])
+        newOffensivePlayer.append(allPlayersArray[ii][5])
+        offenseCount +=1
+        newOffensivePlayer.append(offenseCount)
         offensivePlayersArray.append(newOffensivePlayer)
+
     # or create defensensive players array
     elif allPlayersArray[ii][7] == 'defense':
         newDefensivePlayer = []
@@ -88,16 +96,39 @@ for ii in range(len(allPlayersArray)):
         newDefensivePlayer.append(allPlayersArray[ii][3])
         newDefensivePlayer.append(allPlayersArray[ii][2])
         newDefensivePlayer.append(allPlayersArray[ii][8])
+        newDefensivePlayer.append(allPlayersArray[ii][5])
+
+        defenseCount +=1
+        newDefensivePlayer.append(defenseCount)
         defensivePlayersArray.append(newDefensivePlayer)
 
+##############################################
+# player type reader
+# print("these are the offensive players")
+# for iii in range(len(offensivePlayersArray)):
+#     print(offensivePlayersArray[iii])
+# print("these are the defensive players")
+# for iii in range(len(defensivePlayersArray)):
+#     print(defensivePlayersArray[iii])
 
-print("these are the offensive players")
-print(offensivePlayersArray)
+# for iii in range(len(defensivePlayersArray)):
+#     print(defensivePlayersArray[i])
+##############################################
 
-print("these are the defensive players")
-print(defensivePlayersArray)
+
 
 # select the defense group
-for iii in range(len(defensivePlayersArray)):
-    # set iii number plyer to base
-    primePlayer = defensivePlayersArray[iii]
+# for iii in range(len(defensivePlayersArray)):
+#     # set iii number plyer to base
+#     primePlayer = defensivePlayersArray[iii]
+
+
+
+
+
+# create team function
+
+# select the pivot player
+# add the next 5 players to the defense grop array
+#  add a unique ID to the defense grop array
+# calculate the group value
