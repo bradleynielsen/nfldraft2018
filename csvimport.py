@@ -4,6 +4,7 @@ nflArray = []
 with open('nfl.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
 
+
     for line in csv_reader:
         # print(line)
         nflArray.append(line)
@@ -11,4 +12,4 @@ with open('nfl.csv', 'r') as csv_file:
 
 
 for s in nflArray:
-    print(s) 
+    # print(s)
