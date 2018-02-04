@@ -42,6 +42,8 @@ with open('nfl.csv', 'r') as csv_file:
         #deffensive positions are ["de", "dt", "lb", "olb", "ilb", "mlb", "cb", "s"]
         playerPosition = playerAttributeArray[1]
 
+
+
         if playerPosition in offenseArray:
             playerType = 'offense'
         elif playerPosition in defenseArray:
@@ -53,21 +55,49 @@ with open('nfl.csv', 'r') as csv_file:
         # print(playerAttributeArray[2])
         # print(playerAttributeArray)
 
+        # calculate the player value index(points/cost)
+        # [6]/[3]
+        playerAvgPoints = float(playerAttributeArray[5])
+        playerCost = float(playerAttributeArray[3])
+        playerValueIndex = playerAvgPoints/playerCost
+        # print(playerValueIndex)
+        playerAttributeArray.append(playerValueIndex)
 
         allPlayersArray.append(playerAttributeArray)
 
+#append the new  player importPlayerArray to allPlayersArray
+# print(allPlayersArray)
 
-print(allPlayersArray)
-        # calculate the player value index(points/cost)
-        # [6]/[3]
+# initialize arrays for plyaer type groups
+offensivePlayersArray = []
+defensivePlayersArray = []
+
+# create offensive  players  array
+for ii in range(len(allPlayersArray)):
+    if allPlayersArray[ii][7] == 'offense':
+        newOffensivePlayer = []
+        newOffensivePlayer.append(allPlayersArray[ii][0])
+        newOffensivePlayer.append(allPlayersArray[ii][3])
+        newOffensivePlayer.append(allPlayersArray[ii][2])
+        newOffensivePlayer.append(allPlayersArray[ii][8])
+        offensivePlayersArray.append(newOffensivePlayer)
+    # or create defensensive players array
+    elif allPlayersArray[ii][7] == 'defense':
+        newDefensivePlayer = []
+        newDefensivePlayer.append(allPlayersArray[ii][0])
+        newDefensivePlayer.append(allPlayersArray[ii][3])
+        newDefensivePlayer.append(allPlayersArray[ii][2])
+        newDefensivePlayer.append(allPlayersArray[ii][8])
+        defensivePlayersArray.append(newDefensivePlayer)
 
 
+print("these are the offensive players")
+print(offensivePlayersArray)
 
+print("these are the defensive players")
+print(defensivePlayersArray)
 
-
-    #
-
-
-
-
-    #     append the new  player importPlayerArray to allPlayersArray
+# select the defense group
+for iii in range(len(defensivePlayersArray)):
+    # set iii number plyer to base
+    basePlayer = defensivePlayersArray[iii]
