@@ -100,4 +100,4 @@ print(defensivePlayersArray)
 # select the defense group
 for iii in range(len(defensivePlayersArray)):
     # set iii number plyer to base
-    basePlayer = defensivePlayersArray[iii]
+    primePlayer = defensivePlayersArray[iii]
