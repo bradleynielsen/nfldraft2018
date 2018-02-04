@@ -1,5 +1,5 @@
 import csv
-nflArray = []
+allPlayersArray = []
 
 with open('nfl.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
@@ -7,9 +7,13 @@ with open('nfl.csv', 'r') as csv_file:
 
     for line in csv_reader:
         # print(line)
-        nflArray.append(line)
+        allPlayersArray.append(line)
 
 
 
-for s in nflArray:
-    # print(s)
+# for n in allPlayersArray:
+    # print(n)
+    # print(line[n])
+
+
+print(allPlayersArray[3][3])
