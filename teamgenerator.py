@@ -80,11 +80,17 @@ defenseCount = 0
 for ii in range(len(allPlayersArray)):
     if allPlayersArray[ii][7] == 'offense':
         newOffensivePlayer = []
+        # 0 player GUID
         newOffensivePlayer.append(allPlayersArray[ii][0])
+        # 1 cost
         newOffensivePlayer.append(allPlayersArray[ii][3])
+        # 2 name
         newOffensivePlayer.append(allPlayersArray[ii][2])
+        # 3 group UID
         newOffensivePlayer.append(allPlayersArray[ii][8])
+        # 4 points
         newOffensivePlayer.append(allPlayersArray[ii][5])
+
         offenseCount +=1
         newOffensivePlayer.append(offenseCount)
         offensivePlayersArray.append(newOffensivePlayer)
@@ -92,10 +98,15 @@ for ii in range(len(allPlayersArray)):
     # or create defensensive players array
     elif allPlayersArray[ii][7] == 'defense':
         newDefensivePlayer = []
+        # 0 player GUID
         newDefensivePlayer.append(allPlayersArray[ii][0])
+        # 1 cost
         newDefensivePlayer.append(allPlayersArray[ii][3])
+        # 2 name
         newDefensivePlayer.append(allPlayersArray[ii][2])
+        # 3 group UID
         newDefensivePlayer.append(allPlayersArray[ii][8])
+        # 4 points
         newDefensivePlayer.append(allPlayersArray[ii][5])
 
         defenseCount +=1
@@ -117,9 +128,67 @@ for ii in range(len(allPlayersArray)):
 
 
 
-# select the defense group
-# for iii in range(len(defensivePlayersArray)):
-#     # set iii number plyer to base
+# Generate all defense combinations
+defenseGroupsArray = []
+
+# loop over the players array
+for i in range(len(defensivePlayersArray)):
+    # used to fix the first player in the group to combine with the rest of the array
+    # pivot player tracking
+
+    # create a group with the pivot and the  thest of the arrays
+    totalLength = len(defensivePlayersArray)
+    remainderLength = len(defensivePlayersArray[i:])
+
+
+    index1 = totalLength - remainderLength
+    # print(index1)
+    for n in range(len(defensivePlayersArray[i:])):
+        # create the position index for the second slot
+        # this creates a place holder for each unique combination of players
+        # initialize new group
+        newDefenseGroup = []
+
+        # append the pivot player to index 0 of the newDefenseGroup array
+        newDefenseGroup.append(defensivePlayersArray[i])
+
+        # append the next player to index 1 of the newDefenseGroup array
+        newDefenseGroup.append(defensivePlayersArray[index1])
+
+        # calculate group cost
+        index0Cost = float(defensivePlayersArray[i][1])
+        index1Cost = float(defensivePlayersArray[index1][1])
+
+        groupCost = index0Cost+index1Cost
+        print(groupCost)
+        # append the cost to the group
+        newDefenseGroup.append(groupCost)
+
+        # calculate group points
+
+        index0Points = float(defensivePlayersArray[i][5])
+        index1Points = float(defensivePlayersArray[index1][5])
+
+        groupCost = index0Cost+index1Cost
+        print(groupCost)
+        # append the cost to the group
+        newDefenseGroup.append(groupCost)
+
+
+
+
+
+        index1 +=1
+
+        # newDefenseGroup.append(defensivePlayersArray[index1])
+        # print(newDefenseGroup)
+        defenseGroupsArray.append(newDefenseGroup)
+
+for i in range(len(defenseGroupsArray)):
+    print(defenseGroupsArray[i])
+print(len(defenseGroupsArray))
+
+
 #     primePlayer = defensivePlayersArray[iii]
 
 

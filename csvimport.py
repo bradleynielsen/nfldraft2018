@@ -11,9 +11,13 @@ with open('nfl.csv', 'r') as csv_file:
 
 
 
-# for n in allPlayersArray:
-    # print(n)
-    # print(line[n])
+# for n in range(len(allPlayersArray[])):
+#     print(allPlayersArray[n])
+#     print(allPlayersArray[n+1])
+
+n=0
+print(allPlayersArray[n])
+print(allPlayersArray[n+1])
 
 
-print(allPlayersArray[3][3])
+# print(allPlayersArray[3:])
