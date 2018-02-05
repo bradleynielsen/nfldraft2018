@@ -202,10 +202,8 @@ offenseGroupsArray = []
 for l1 in range(len(offensivePlayersArray)):
     index0 = l1
     index1 = index0+1
-    index2 = index1+1
-    index3 = index2+1
-
-    # print(totalLength)
+    offenseTotalLength = len(offensivePlayersArray)
+    # print(offenseTotalLength)
     # print(loop1RemainderLength)
     # print(index0)
     # print(index1)
@@ -213,25 +211,17 @@ for l1 in range(len(offensivePlayersArray)):
     # print(index3)
 
     # loop2
-    for l2 in range(len(offensivePlayersArray[l1:])):
-        if index0 < index1 < index2 < index3:
-            # loop3
-            for l3 in range(len(offensivePlayersArray[l2:])):
-                if index0 < index1 < index2 < index3:
-                    index2 +=1
-                    # loop4
-                    for l4 in range(len(offensivePlayersArray[l3:])):
-                        if index0 < index1 < index2 < index3:
-                            print("index 0: " + repr(index0) + " index 1: " + repr(index1) + " index 2: " + repr(index2))
-                            index3 +=1
-                        else:
-                            continue
-                    # end loop4
-
-                else:
-                    continue
-            # end loop3
-        else:
-            continue
+    for l2 in range(len(offensivePlayersArray[index1:])):
+        index2 = index1+1
+        # loop3
+        for l3 in range(len(offensivePlayersArray[index2:])):
+            index3 = index2+1
+            # loop4
+            for l4 in range(len(offensivePlayersArray[index3:])):
+                print("index 0: " + repr(index0) + " index 1: " + repr(index1) + " index 2: " + repr(index2) + " index 3: " + repr(index3))
+                index3 +=1
+            # end loop4
+            index2 +=1
+        # end loop3
         index1 +=1
     # end loop2
