@@ -137,67 +137,101 @@ for i in range(len(defensivePlayersArray)):
     totalLength = len(defensivePlayersArray)
     remainderLength = len(defensivePlayersArray[i:])
     # create the position index for the second slot
-    index1 = totalLength - remainderLength
+    index1 = totalLength - remainderLength+1
 
     # print(totalLength)
+    # print(remainderLength)
 
     for n in range(len(defensivePlayersArray[i:])):
         # initialize new group
         newDefenseGroup = []
-        print(i)
-        print(index1)
+        # print(i)
+        # print(index1)
 
-        # append the pivot player to index 0 of the newDefenseGroup array
-        newDefenseGroup.append(defensivePlayersArray[i])
 
-        # append the next player to index 1 of the newDefenseGroup array
-        newDefenseGroup.append(defensivePlayersArray[index1])
+        if i < index1:
+            try:
+                # append the pivot player to index 0 of the newDefenseGroup array
+                newDefenseGroup.append(defensivePlayersArray[i])
 
-        # calculate group cost
-        index0Cost = float(defensivePlayersArray[i][1])
-        index1Cost = float(defensivePlayersArray[index1][1])
-        groupCost = index0Cost+index1Cost
+                # append the next player to index 1 of the newDefenseGroup array
+                newDefenseGroup.append(defensivePlayersArray[index1])
+                # calculate group cost
+                index0Cost = float(defensivePlayersArray[i][1])
+                index1Cost = float(defensivePlayersArray[index1][1])
+                groupCost = index0Cost+index1Cost
 
-        # append the cost to the group
-        newDefenseGroup.append(groupCost)
+                # append the cost to the group
+                newDefenseGroup.append(groupCost)
 
-        # calculate group points
-        index0Points = float(defensivePlayersArray[i][5])
-        index1Points = float(defensivePlayersArray[index1][5])
+                # calculate group points
+                index0Points = float(defensivePlayersArray[i][5])
+                index1Points = float(defensivePlayersArray[index1][5])
 
-        groupPoints = index0Points+index1Points
-        # print(groupPoints)
+                groupPoints = index0Points+index1Points
+                # print(groupPoints)
 
-        # append the cost to the group
-        newDefenseGroup.append(groupPoints)
-        # advance the index1
-        index1 +=1
+                # append the cost to the group
+                newDefenseGroup.append(groupPoints)
 
-        # newDefenseGroup.append(defensivePlayersArray[index1])
-        # print(newDefenseGroup)
-        defenseGroupsArray.append(newDefenseGroup)
+                # advance the index1
+                index1 +=1
 
+                # newDefenseGroup.append(defensivePlayersArray[index1])
+                # print(newDefenseGroup)
+                defenseGroupsArray.append(newDefenseGroup)
+            except:
+                continue
+        else:
+            continue
 # for i in range(len(defenseGroupsArray)):
 #     print(defenseGroupsArray[i])
-# print(len(defenseGroupsArray))
+totalDefenseCombinations = len(defenseGroupsArray)
+# print(" total defense combinations: " + repr(totalDefenseCombinations))
 
 
 
 ##############################################################################
 # OFFENSE GROUP GENERATION
 ##############################################################################
-offenseGroupsArray = []
-# first for loop itterates over the offense players array,
-# creating the value for index 0 of the newOffenseGroup
-for index0Counter in range(len(offensivePlayersArray)):
-    totalLength = len(offensivePlayersArray)
-    loop1RemainderLength = len(offensivePlayersArray[index0Counter:])
-    index0 = index0Counter
-    index1 = totalLength - loop1RemainderLength
-    # print("index 0: " + repr(index0))
-    # print("index 1: " + repr(index1))
 
-    # second for loop itterates over the offense players array,
-    # creating the value for index 1 of the newOffenseGroup
-    # for index1Counter in range(len(offensivePlayersArray[index0Counter]:))
-            # index2 = totalLength -
+# init the array
+offenseGroupsArray = []
+# loop1 itterates over the offense players array,
+# creating the value for index 0 of the newOffenseGroup
+for l1 in range(len(offensivePlayersArray)):
+    index0 = l1
+    index1 = index0+1
+    index2 = index1+1
+    index3 = index2+1
+
+    # print(totalLength)
+    # print(loop1RemainderLength)
+    # print(index0)
+    # print(index1)
+    # print(index2)
+    # print(index3)
+
+    # loop2
+    for l2 in range(len(offensivePlayersArray[l1:])):
+        if index0 < index1 < index2 < index3:
+            # loop3
+            for l3 in range(len(offensivePlayersArray[l2:])):
+                if index0 < index1 < index2 < index3:
+                    index2 +=1
+                    # loop4
+                    for l4 in range(len(offensivePlayersArray[l3:])):
+                        if index0 < index1 < index2 < index3:
+                            print("index 0: " + repr(index0) + " index 1: " + repr(index1) + " index 2: " + repr(index2))
+                            index3 +=1
+                        else:
+                            continue
+                    # end loop4
+
+                else:
+                    continue
+            # end loop3
+        else:
+            continue
+        index1 +=1
+    # end loop2
