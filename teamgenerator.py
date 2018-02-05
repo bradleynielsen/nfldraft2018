@@ -133,7 +133,7 @@ for ii in range(len(allPlayersArray)):
 # Generate all defense combinations
 
 # init the array
-defenseGroupsArray = []
+defenseGroupsArrCay = []
 
 # loop over the players array
 for i in range(len(defensivePlayersArray)):
@@ -179,61 +179,14 @@ for i in range(len(defensivePlayersArray)):
         # print(newDefenseGroup)
         defenseGroupsArray.append(newDefenseGroup)
 
-for i in range(len(defenseGroupsArray)):
-    print(defenseGroupsArray[i])
-print(len(defenseGroupsArray))
+# for i in range(len(defenseGroupsArray)):
+#     print(defenseGroupsArray[i])
+# print(len(defenseGroupsArray))
 
 
 
 ##############################################################################
 # OFFENSE GROUP GENERATION
 ##############################################################################
-# loop over the players array
+offenseGroupsArrCay = []
 for i in range(len(offensivePlayersArray)):
-    # create a group with the pivot and the  thest of the arrays
-    totalLength = len(offensivePlayersArray)
-    remainderLength = len(offensivePlayersArray[i:])
-
-
-    index1 = totalLength - remainderLength
-    # print(index1)
-    for n in range(len(offensivePlayersArray[i:])):
-        # create the position index for the second slot
-        # this creates a place holder for each unique combination of players
-        # initialize new group
-        newDefenseGroup = []
-
-        # append the pivot player to index 0 of the newDefenseGroup array
-        newDefenseGroup.append(offensivePlayersArray[i])
-
-        # append the next player to index 1 of the newDefenseGroup array
-        newDefenseGroup.append(offensivePlayersArray[index1])
-
-        # calculate group cost
-        index0Cost = float(offensivePlayersArray[i][1])
-        index1Cost = float(offensivePlayersArray[index1][1])
-        groupCost = index0Cost+index1Cost
-
-        # append the cost to the group
-        newDefenseGroup.append(groupCost)
-
-        # calculate group points
-
-        index0Points = float(offensivePlayersArray[i][5])
-        index1Points = float(offensivePlayersArray[index1][5])
-
-        groupPoints = index0Points+index1Points
-        # print(groupPoints)
-
-        # append the cost to the group
-        newDefenseGroup.append(groupPoints)
-        # advance the index1
-        index1 +=1
-
-        # newDefenseGroup.append(defensivePlayersArray[index1])
-        # print(newDefenseGroup)
-        defenseGroupsArray.append(newDefenseGroup)
-
-for i in range(len(defenseGroupsArray)):
-    print(defenseGroupsArray[i])
-print(len(defenseGroupsArray))
