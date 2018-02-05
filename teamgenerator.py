@@ -3,6 +3,7 @@ import csv
 
 
 # create a blank array named allPlayersArray
+# to convert .csv to a 2 dementional array of players w/ attributes
 allPlayersArray =[]
 defenseArray = ["DE", "DT", "LB", "OLB", "ILB", "MLB", "CB", "S"]
 offenseArray = ["QB", "RB", "FB", "WR", "TE", "LT", "LG", "C", "RG", "RT", "K", "R", "PR"]
@@ -30,33 +31,28 @@ with open('nfl.csv', 'r') as csv_file:
         playerID = count
         playerAttributeArray.append(playerID)
 
-        # add player information to the playerAttributeArray
+        # add player w/ attributes to the playerAttributeArray
         for i in range(len(line)):
             playerAttributeArray.append(line[i])
 
-        # playerAttributeArray.append()
-
-        ######################################################################
         #determine if the player is offensie or defensive
-        #offiensive positions are ["qb", "rb", "fb", "wr", "te", "lt", "lg", "c", "rg", "rt", "k", "r", "pr"]
-        #deffensive positions are ["de", "dt", "lb", "olb", "ilb", "mlb", "cb", "s"]
+        #offiensive positions are:
+        # ["qb", "rb", "fb", "wr", "te", "lt", "lg", "c", "rg", "rt", "k", "r", "pr"]
+        #deffensive positions are:
+        # ["de", "dt", "lb", "olb", "ilb", "mlb", "cb", "s"]
         playerPosition = playerAttributeArray[1]
-
-
-
         if playerPosition in offenseArray:
             playerType = 'offense'
         elif playerPosition in defenseArray:
             playerType = 'defense'
 
-        #add offensive/defensive value to importPlayerArray to position n in the array
+        #add offensive/defensive value to importPlayerArray to the array
         playerAttributeArray.append(playerType)
         # print("the current player is ")
         # print(playerAttributeArray[2])
         # print(playerAttributeArray)
 
         # calculate the player value index(points/cost)
-        # [6]/[3]
         playerAvgPoints = float(playerAttributeArray[5])
         playerCost = float(playerAttributeArray[3])
         playerValueIndex = playerAvgPoints/playerCost
@@ -66,7 +62,7 @@ with open('nfl.csv', 'r') as csv_file:
         #append the new  player importPlayerArray to allPlayersArray
         allPlayersArray.append(playerAttributeArray)
 
-# print all players
+# # print all players
 # for n in range(len(allPlayersArray)):
 #     print(allPlayersArray[n])
 
@@ -113,18 +109,18 @@ for ii in range(len(allPlayersArray)):
         newDefensivePlayer.append(defenseCount)
         defensivePlayersArray.append(newDefensivePlayer)
 
-##############################################
+##############################################################################
 # player type reader
 # print("these are the offensive players")
-# for iii in range(len(offensivePlayersArray)):
-#     print(offensivePlayersArray[iii])
+# for i in range(len(offensivePlayersArray)):
+#     print(offensivePlayersArray[i])
 # print("these are the defensive players")
-# for iii in range(len(defensivePlayersArray)):
-#     print(defensivePlayersArray[iii])
-
-# for iii in range(len(defensivePlayersArray)):
+# for i in range(len(defensivePlayersArray)):
 #     print(defensivePlayersArray[i])
-##############################################
+
+# for i in range(len(defensivePlayersArray)):
+#     print(defensivePlayersArray[i])
+##############################################################################
 
 
 ##############################################################################
@@ -133,20 +129,23 @@ for ii in range(len(allPlayersArray)):
 # Generate all defense combinations
 
 # init the array
-defenseGroupsArrCay = []
+defenseGroupsArray = []
 
 # loop over the players array
 for i in range(len(defensivePlayersArray)):
     # create a group with the pivot and the  thest of the arrays
     totalLength = len(defensivePlayersArray)
     remainderLength = len(defensivePlayersArray[i:])
+    # create the position index for the second slot
     index1 = totalLength - remainderLength
-    # print(index1)
+
+    # print(totalLength)
+
     for n in range(len(defensivePlayersArray[i:])):
-        # create the position index for the second slot
-        # this creates a place holder for each unique combination of players
         # initialize new group
         newDefenseGroup = []
+        print(i)
+        print(index1)
 
         # append the pivot player to index 0 of the newDefenseGroup array
         newDefenseGroup.append(defensivePlayersArray[i])
@@ -163,7 +162,6 @@ for i in range(len(defensivePlayersArray)):
         newDefenseGroup.append(groupCost)
 
         # calculate group points
-
         index0Points = float(defensivePlayersArray[i][5])
         index1Points = float(defensivePlayersArray[index1][5])
 
@@ -188,5 +186,18 @@ for i in range(len(defensivePlayersArray)):
 ##############################################################################
 # OFFENSE GROUP GENERATION
 ##############################################################################
-offenseGroupsArrCay = []
-for i in range(len(offensivePlayersArray)):
+offenseGroupsArray = []
+# first for loop itterates over the offense players array,
+# creating the value for index 0 of the newOffenseGroup
+for index0Counter in range(len(offensivePlayersArray)):
+    totalLength = len(offensivePlayersArray)
+    loop1RemainderLength = len(offensivePlayersArray[index0Counter:])
+    index0 = index0Counter
+    index1 = totalLength - loop1RemainderLength
+    # print("index 0: " + repr(index0))
+    # print("index 1: " + repr(index1))
+
+    # second for loop itterates over the offense players array,
+    # creating the value for index 1 of the newOffenseGroup
+    # for index1Counter in range(len(offensivePlayersArray[index0Counter]:))
+            # index2 = totalLength -
