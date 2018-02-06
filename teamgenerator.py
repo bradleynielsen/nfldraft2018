@@ -186,7 +186,7 @@ for i in range(len(defensivePlayersArray)):
             continue
 # for i in range(len(defenseGroupsArray)):
 #     print(defenseGroupsArray[i])
-totalDefenseCombinations = len(defenseGroupsArray)
+# totalDefenseCombinations = len(defenseGroupsArray)
 # print(" total defense combinations: " + repr(totalDefenseCombinations))
 
 
@@ -218,10 +218,104 @@ for l1 in range(len(offensivePlayersArray)):
             index3 = index2+1
             # loop4
             for l4 in range(len(offensivePlayersArray[index3:])):
-                print("index 0: " + repr(index0) + " index 1: " + repr(index1) + " index 2: " + repr(index2) + " index 3: " + repr(index3))
+                # print("index 0: " + repr(index0) + " index 1: " + repr(index1) + " index 2: " + repr(index2) + " index 3: " + repr(index3))
+                # init new groupPoints
+                newOffenseGroupArray = []
+                # append players to new array
+                newOffenseGroupArray.append(offensivePlayersArray[index0])
+                newOffenseGroupArray.append(offensivePlayersArray[index1])
+                newOffenseGroupArray.append(offensivePlayersArray[index2])
+                newOffenseGroupArray.append(offensivePlayersArray[index3])
+
+                # calculate group cost
+                index0Cost = float(offensivePlayersArray[index0][1])
+                index1Cost = float(offensivePlayersArray[index1][1])
+                index2Cost = float(offensivePlayersArray[index2][1])
+                index3Cost = float(offensivePlayersArray[index3][1])
+                groupCost = index0Cost+index1Cost+index2Cost+index3Cost
+
+                # append the cost to the group
+                newOffenseGroupArray.append(groupCost)
+
+                # calculate group points
+                index0Points = float(offensivePlayersArray[index0][5])
+                index1Points = float(offensivePlayersArray[index1][5])
+                index2Points = float(offensivePlayersArray[index2][5])
+                index3Points = float(offensivePlayersArray[index3][5])
+
+                groupPoints = index0Points+index1Points+index2Points+index3Points
+                # print(groupPoints)
+
+                # append the cost to the group
+                newOffenseGroupArray.append(groupPoints)
+
+                # append new group to array
+                offenseGroupsArray.append(newOffenseGroupArray)
+
                 index3 +=1
             # end loop4
             index2 +=1
         # end loop3
         index1 +=1
     # end loop2
+# end loop1
+
+# for i in range(len(offenseGroupsArray)):
+#     print(offenseGroupsArray[i])
+# totalOffenseCombinations = len(offenseGroupsArray)
+# print(" total Offense combinations: " + repr(totalOffenseCombinations))
+
+
+
+
+########################################################################
+# Create teams
+
+allTeamsArray = []
+teamNumber = 1
+for o in range(len(offenseGroupsArray)):
+    for d in range(len(defenseGroupsArray)):
+        newTeamArray = []
+        newTeamArray.append(teamNumber)
+        teamNumber +=1
+
+        # append each of the offense players
+        for i in range(4):
+            newTeamArray.append(offenseGroupsArray[o][i])
+
+        # append each of the defense players
+        for i in range(2):
+            newTeamArray.append(defenseGroupsArray[d][i])
+
+        # calculate the cost offense + defense
+        offenseCost = offenseGroupsArray[o][4]
+        defenseCost = defenseGroupsArray[d][2]
+        teamCost = offenseCost+defenseCost
+
+        # calculate the points offense + defense
+        offensePoints = offenseGroupsArray[o][5]
+        defensePoints = defenseGroupsArray[d][3]
+        teamPoints = offensePoints + defensePoints
+
+        # append the cost
+        newTeamArray.append(teamCost)
+        newTeamArray.append(teamPoints)
+
+        # print("Adding team #" + str(teamNumber))
+
+        # append the new team to the all teams array
+        if teamCost <= 50000 and teamCost > 49950 and teamPoints > 109:
+            allTeamsArray.append(newTeamArray)
+            print(newTeamArray)
+        else:
+            continue
+
+totalTeams = len(allTeamsArray)
+print(totalTeams)
+
+# # write the results to csv_file
+#
+# csvfile = "results.csv"
+# with open(csvfile, "w") as output:
+#     writer = csv.writer(output, lineterminator='\n')
+#     writer.writerows[totalTeams]
