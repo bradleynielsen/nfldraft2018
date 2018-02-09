@@ -34,7 +34,7 @@ with open('nfl.csv', 'r') as csv_file:
         # add player w/ attributes to the playerAttributeArray
         for i in range(len(line)):
             playerAttributeArray.append(line[i])
-
+            print(str(playerAttributeArray))
         #determine if the player is offensie or defensive
         #offiensive positions are:
         # ["qb", "rb", "fb", "wr", "te", "lt", "lg", "c", "rg", "rt", "k", "r", "pr"]
@@ -62,11 +62,11 @@ with open('nfl.csv', 'r') as csv_file:
         #append the new  player importPlayerArray to allPlayersArray
         allPlayersArray.append(playerAttributeArray)
 
-# # print all players
-# for n in range(len(allPlayersArray)):
-#     print(allPlayersArray[n])
+# print all players
+for n in range(len(allPlayersArray)):
+    print(allPlayersArray[n])
 
-# initialize arrays for plyaer type groups
+initialize arrays for plyaer type groups
 offensivePlayersArray = []
 defensivePlayersArray = []
 
@@ -78,6 +78,7 @@ for ii in range(len(allPlayersArray)):
         newOffensivePlayer = []
         # 0 player GUID
         newOffensivePlayer.append(allPlayersArray[ii][0])
+        print(newOffensivePlayer)
         # 1 cost
         newOffensivePlayer.append(allPlayersArray[ii][3])
         # 2 name
