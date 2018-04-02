@@ -301,21 +301,21 @@ for o in range(len(offenseGroupsArray)):
         newTeamArray.append(teamCost)
         newTeamArray.append(teamPoints)
 
-        # print("Adding team #" + str(teamNumber))
 
         # append the new team to the all teams array
-        if teamCost <= 50000 and teamCost > 49950 and teamPoints > 109:
+        if teamCost == 50000  and teamPoints > 120:
             allTeamsArray.append(newTeamArray)
-            print(newTeamArray)
+            print("Adding team #" + str(teamNumber))
+            # print(newTeamArray)
         else:
             continue
 
 totalTeams = len(allTeamsArray)
 print(totalTeams)
 
-# # write the results to csv_file
-#
-# csvfile = "results.csv"
-# with open(csvfile, "w") as output:
-#     writer = csv.writer(output, lineterminator='\n')
-#     writer.writerows[totalTeams]
+# write the results to csv_file
+
+csvfile = "results.csv"
+with open(csvfile, "w") as output:
+    writer = csv.writer(output, lineterminator='\n')
+    writer.writerows[totalTeams]
